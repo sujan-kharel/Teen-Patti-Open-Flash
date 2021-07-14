@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Open Flash</title>
+    <style>
+    body {
+            background-color: #8E9DAD;
+            max-width;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+
+        .container {
+            position: sticky;
+            color: red;
+
+            display: inline-block;
+
+            }
+
+
+        #table
+        {
+
+            width:1050px;
+            height:auto;
+            filter: drop-shadow(0 0 0.75rem crimson);
+        }
+
+        .cards
+        {
+
+            width: 50px;
+            height: auto;
+
+        }
+
+
+
+            .player-name
+            {
+                padding: 10px;
+                font-size: 20px;
+            }
+
+
+
+            /* Top right text */
+            .top-mid {
+              position: absolute;
+              top: 100px;
+              left: 50%;
+              transform: translate(-50%, -50%);
+            }
+
+            /* Bottom right text */
+            .bottom-mid {
+              position: absolute;
+              bottom: 10px;
+              left: 50%;
+              transform: translate(-50%, -50%);
+            }
+
+            /* Centered text */
+            .mid-left {
+              position: absolute;
+              top: 50%;
+              left: 25%;
+              transform: translate(-50%, -50%);
+            }
+
+            .mid-right {
+              position: absolute;
+              top: 50%;
+              left: 75%;
+              transform: translate(-50%, -50%);
+            }
+            .mid {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              font-size: 24px;
+            }
+    </style>
+    <script type="text/javascript">
+        window.history.forward();
+        function noBack() {
+            window.history.forward();
+        }
+    </script>
+</head>
+<body>
+
+<div th:replace="index :: size"> </div>
+
+<div id="content" align="center">
+
+
+
+    <p th:text="${values}"></p>
+    <p th:text="${hand}"></p>
+
+</div>
+
+<div class="container">
+    <img id="table" th:src="@{cardImages/table.png}">
+
+    <div class="top-mid">
+        <div class="player-name">Player1 (You)</div>
+        <tr th:each="value: ${values.values()[0]}">
+            <img class="cards" th:src="@{'cardImages/'+ ${value} +'.png'}">
+        </tr>
+    </div>
+
+    <div class="mid-right">
+        <div class="player-name">Player2</div>
+        <tr th:each="value: ${values.values()[1]}">
+            <img class="cards" th:src="@{'cardImages/'+ ${value} +'.png'}">
+        </tr>
+    </div>
+    <div class="bottom-mid" th:if="${values.values().size() > 2}">
+        <div class="player-name">Player3</div>
+        <tr th:each="value: ${values.values()[2]}">
+            <img class="cards" th:src="@{'cardImages/'+ ${value} +'.png'}">
+        </tr>
+    </div>
+    <div class="mid-left" th:if="${values.values().size() > 3}">
+        <div class="player-name">Player4</div>
+        <tr th:each="value: ${values.values()[3]}">
+            <img class="cards" th:src="@{'cardImages/'+ ${value} +'.png'}">
+        </tr>
+    </div>
+
+    <div class="mid">
+        <h4 th:text="${winner}"> </h4>
+    </div>
+
+
+</div>
+
+</body>
+</html>

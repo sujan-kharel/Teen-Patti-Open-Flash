@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Open Flash</title>
+
+
+</head>
+<body th:style="'background-image:url(' + @{cardImages/red.jpeg} + ');
+background-repeat: no-repeat, repeat; background-size: cover;'" >
+
+
+<div id="menu" th:fragment="size">
+
+
+
+    <h1 class="name">Open Flash</h1>
+    <form action="/Deal" method="post">
+        <label>Team Size:
+            <input name="size" placeholder="size" type="number"
+                   min=2 max=4 value="4" style="width: 55px; height:40px;
+                    font-size:25px" >
+        </label>
+            <button class="button" type="submit">
+                Deal
+            </button>
+
+    </form>
+
+    <style>
+
+        #menu
+        {
+            text-align: center;
+        }
+        .name{
+              position: relative;
+              font-size: 50px;
+              text-shadow: 1px 1px red;
+              color: green;
+            }
+
+            .button {
+                      background-color: green;
+                      border: none;
+                      color: white;
+                      padding: 15px 32px;
+                      text-align: center;
+                      text-decoration: none;
+                      display: inline-block;
+                      font-size: 16px;
+                      margin: 4px 2px;
+                      cursor: pointer;
+                      text-shadow: .2px .2px red;
+                      box-shadow: 1px 1px red;
+                    }
+             label {
+                    color: green;
+                    font-weight: bold;
+                    width: 150px;
+                    font-size: 35px;
+                    text-shadow: .5px .5px red;
+                    }
+
+
+    </style>
+</div>
+
+</body>
+</html>
